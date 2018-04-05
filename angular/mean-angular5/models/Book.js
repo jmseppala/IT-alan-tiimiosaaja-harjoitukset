@@ -7,6 +7,7 @@ var BookSchema = new mongoose.Schema({
   description: String,
   published_year: String,
   publisher: String,
+  price: Number,
   updated_date: { type: Date, default: Date.now },
 });
 
