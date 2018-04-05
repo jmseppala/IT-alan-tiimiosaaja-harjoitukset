@@ -1,0 +1,50 @@
+<p>
+  new-cmp works!
+</p>
+
+<p>
+  {{ myvariable }}
+</p>
+
+<p>
+  {{ mynewvariable }}
+</p>
+
+<div>
+  <option *ngFor = "let i of mycarlist">
+      Your car is {{i}}
+  </option>
+</div>
+  
+
+<div>
+  <select (change) = mycarlistchanged($event.target.value)>
+      <option *ngFor = "let i of mycarlist">
+          Your car is {{i}}
+        </option>
+  </select>
+</div>
+
+<div>
+   <span *ngIf="isavailable; then selection1 else selection2">Condition is valid.</span>
+   <ng-template #selection1>Condition is valid</ng-template>
+   <ng-template #selection2>Condition is invalid</ng-template>
+</div>
+
+<div>
+    <span *ngIf="isavailabletoo > 100; then selection11 else selection22">Value over 100.</span>
+    <ng-template #selection11>Value over 100.</ng-template>
+    <ng-template #selection22>Value not over 100.</ng-template>
+ </div>
+
+<button (click) = mybuttonclickeventhandler($event)>
+  Press me!
+</button>
+
+<p>this is a jsonpipe:</p>
+<p>{{myjsonvariable | json}}</p>
+
+<p>{{myServiceVariable}}</p>
+
+
+
