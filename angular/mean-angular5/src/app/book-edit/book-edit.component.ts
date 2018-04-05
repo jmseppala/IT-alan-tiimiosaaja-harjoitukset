@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BookEditComponent implements OnInit {
 
-  book: any = {};
+  book:any = {};
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
 
