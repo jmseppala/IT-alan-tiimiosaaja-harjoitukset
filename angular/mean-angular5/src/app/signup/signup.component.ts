@@ -18,13 +18,13 @@ export class SignupComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
   
   signup() {
-  this.http.post('/user/signup',this.signupData).subscribe(resp => {
-    console.log(resp);
-    this.router.navigate(['login']);
-  }, err => {
-    this.message = err.error.msg;
-  });
-}
+	  this.http.post('/user/signup',this.signupData).subscribe(resp => {
+		console.log(resp);
+		this.router.navigate(['login']);
+	  }, err => {
+		this.message = err.error.msg;
+	  });
+	}
 
   ngOnInit() {
   }

@@ -12,21 +12,21 @@ import { of } from 'rxjs/observable/of';
 })
 export class LoginComponent implements OnInit {
 	
-loginData = { username:'', password:'' };
-message = '';
-data: any;
+	loginData = { username:'', password:'' };
+	message = '';
+	data: any;
 
-constructor(private http: HttpClient, private router: Router) { }
+	constructor(private http: HttpClient, private router: Router) { }
 
-login() {
-  this.http.post('/user/signin',this.loginData).subscribe(resp => {
-    this.data = resp;
-    localStorage.setItem('jwtToken', this.data.token);
-    this.router.navigate(['books']);
-  }, err => {
-    this.message = err.error.msg;
-  });
-}
+	login() {
+	  this.http.post('/user/signin',this.loginData).subscribe(resp => {
+		this.data = resp;
+		localStorage.setItem('jwtToken', this.data.token);
+		this.router.navigate(['books']);
+	  }, err => {
+		this.message = err.error.msg;
+	  });
+	}
 
   ngOnInit() {
   }

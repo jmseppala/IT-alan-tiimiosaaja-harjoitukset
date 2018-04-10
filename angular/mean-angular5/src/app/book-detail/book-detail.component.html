@@ -3,7 +3,7 @@
   <dl class="list">
     <dt>ISBN</dt>
     <dd>{{ book.isbn }}</dd>
-     <dt>Title</dt>
+    <dt>Title</dt>
     <dd>{{ book.title }}</dd>
 	<dt>Author</dt>
     <dd>{{ book.author }}</dd>
@@ -19,6 +19,7 @@
     <dd>{{ book.updated_date | date:'short' }}</dd>
   </dl>
 </div>
+
 <div class="row">
   <div class="col-md-12">
     <a [routerLink]="['/books']" class="btn btn-success">BACK</a>

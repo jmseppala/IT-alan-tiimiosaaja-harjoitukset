@@ -3,10 +3,9 @@
     <a [routerLink]="['/book-create']" class="btn btn-default btn-lg">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
- <button class="btn btn-success" (click)="logout()">Logout</button>
- </h1>
- 
- <table class="table">
+	<button class="btn btn-success" (click)="logout()">Logout</button>
+   </h1>
+   <table class="table">
     <thead>
       <tr>
         <th>Title</th>
@@ -18,7 +17,10 @@
       <tr *ngFor="let book of books">
         <td>{{ book.title }}</td>
         <td>{{ book.author }}</td>
-        <td><a [routerLink]="['/book-details', book._id]">Show Details</a></td>
+        <td>
+			<a [routerLink]="['/book-details', book._id]">
+			  Show Details</a>
+		</td>
       </tr>
     </tbody>
   </table>
