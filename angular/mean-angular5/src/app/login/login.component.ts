@@ -19,7 +19,7 @@ data: any;
 constructor(private http: HttpClient, private router: Router) { }
 
 login() {
-  this.http.post('/api/signin',this.loginData).subscribe(resp => {
+  this.http.post('/user/signin',this.loginData).subscribe(resp => {
     this.data = resp;
     localStorage.setItem('jwtToken', this.data.token);
     this.router.navigate(['books']);

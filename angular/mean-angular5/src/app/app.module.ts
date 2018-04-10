@@ -35,11 +35,7 @@ const appRoutes: Routes = [
     component: BookEditComponent,
     data: { title: 'Edit Book' }
   },
-  { path: '',
-    redirectTo: '/books',
-    pathMatch: 'full'
-  },
-   {
+  {
     path: 'login',
     component: LoginComponent,
     data: { title: 'Login' }
@@ -48,6 +44,11 @@ const appRoutes: Routes = [
     path: 'signup',
     component: SignupComponent,
     data: { title: 'Sign Up' }
+  },
+   {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
   }
 ];
 @NgModule({
