@@ -21,7 +21,7 @@ router.get('/', passport.authenticate('jwt', { session: false}), function(req, r
 });
   
 /* GET SINGLE BOOK BY ID */
-router.get('/id', passport.authenticate('jwt', { session: false}), function(req, res) {
+router.get('/:id', passport.authenticate('jwt', { session: false}), function(req, res) {
 var token = getToken(req.headers); 
 if (token) {
      Book.findById(req.params.id, function(err,books) {
@@ -78,5 +78,18 @@ router.delete('/:id', passport.authenticate('jwt', { session: false}), function(
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
+
+getToken = function(headers) {
+	if (headers && headers.authorization) {
+		var parted = headers.authorization.split(' ');
+		if (parted.length === 2) {
+			return parted[1];
+		} else {
+			return null;
+		}
+	} else {
+		return null;
+	}
+}	
 
 module.exports = router;

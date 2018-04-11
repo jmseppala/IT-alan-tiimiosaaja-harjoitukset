@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
+import { HttpHeaders } from '@angular/common/http';
+
 @Component({
   selector: 'app-book-edit',
   templateUrl: './book-edit.component.html',
@@ -18,15 +20,21 @@ export class BookEditComponent implements OnInit {
     this.getBook(this.route.snapshot.params['id']);
   }
 
-  getBook(id) {
-    this.http.get('/book/'+id).subscribe(data => {
+   getBook(id) {
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Authorization': localStorage.getItem('jwtToken') })
+    };
+    this.http.get('/book/'+id, httpOptions).subscribe(data => {
       this.book = data;
     });
   }
 
   updateBook(id) {
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Authorization': localStorage.getItem('jwtToken') })
+    };
     this.book.updated_date = Date.now();
-    this.http.put('/book/'+id, this.book)
+    this.http.put('/book/'+id, this.book, httpOptions)
       .subscribe(res => {
           let id = res['_id'];
           this.router.navigate(['/book-details', id]);
@@ -37,3 +45,4 @@ export class BookEditComponent implements OnInit {
   }
 
 }
+

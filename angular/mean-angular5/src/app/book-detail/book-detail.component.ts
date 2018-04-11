@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-book-detail',
@@ -19,13 +20,19 @@ export class BookDetailComponent implements OnInit {
   }
 
   getBookDetail(id) {
-    this.http.get('/book/'+id).subscribe(data => {
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Authorization': localStorage.getItem('jwtToken') })
+    };
+    this.http.get('/book/'+id, httpOptions).subscribe(data => {
       this.book = data;
     });
   }
 
   deleteBook(id) {
-    this.http.delete('/book/'+id)
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Authorization': localStorage.getItem('jwtToken') })
+    };
+    this.http.delete('/book/'+id, httpOptions)
       .subscribe(res => {
           this.router.navigate(['/books']);
         }, (err) => {
@@ -33,5 +40,4 @@ export class BookDetailComponent implements OnInit {
         }
       );
   }
-
 }
